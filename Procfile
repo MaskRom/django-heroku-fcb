@@ -1,0 +1,1 @@
+web: gunicorn fcb.wsgi --log-file -

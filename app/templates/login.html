@@ -1,0 +1,42 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>管理者ログイン</title>
+    <link rel="stylesheet" href="../style/css/login.css">
+</head>
+<body>
+    <header>
+    </header>
+<!--
+    id : content
+        id : modal_header
+            id : content_title
+    id : modal_body
+        id : section_class
+            class : content_link
+-->
+    <main>
+        <div id="content">
+            <div id="modal_header">
+                <p id="content_title">管理者ログイン</p>
+                <a href="home.html" class="modalClose">&times;</a>
+            </div>
+            <div id="modal_body">
+                <form method="POST">
+                    <label>管理者ID</label><br>
+                    <input type="text" name="username"><br>
+                    <label>パスワード</label><br>
+                    <input type="password" name="password"><br>
+                    <input type="submit" class="submit" value="ログイン">
+                    <a href="admin.html">Djangoログイン</a>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <small>Python3 &times; Django</small>
+  </footer>
+</body>
+</html>

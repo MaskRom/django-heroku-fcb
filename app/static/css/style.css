@@ -1,0 +1,502 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #111;
+}
+body{
+    background: whitesmoke;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+header{
+    margin: 0 15%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    height: 75px;
+}
+.header{
+    text-align: center;
+    width: calc(100%/3);
+    margin: auto 0;
+}
+#header_class{
+    border-radius: 4px;
+    text-align: center;
+}
+#header_class_name{
+    font-size: 35px;
+}
+#header_class_change{
+    color: royalblue;
+    font-weight: 900;
+    font-size: 15px;
+}
+#header_time{
+    font-size: 30px;
+    font-weight: 900;
+}
+#header_colour{
+    text-align: center;
+}
+.box{
+    margin: 0 2px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ddd;
+    display: inline-block;
+}
+.box:hover{
+    opacity: 0.75;
+}
+#blue{
+    background: dodgerblue;
+}
+#orange{
+    background: orange;
+}
+#pink{
+    background: hotpink;
+}
+#green{
+    background: teal;
+}
+#login{
+    font-size: 20px;
+    text-decoration: none;
+}
+#login:hover{
+    color: royalblue;
+}
+/*===============メイン===============*/
+main{
+    flex: 1;
+}
+
+.notification-badge {
+    position: absolute;
+    border: 1px solid #fff;
+    top: -5px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #E93F33;
+    color: white;
+    font-weight: 900;
+    text-align: center;
+    font-size: 18px;
+}
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px 10%;
+    border-radius: 10px;
+    border-bottom: solid 5px #bbb;
+}
+  /*タブのスタイル*/
+  .tab_item {
+    width: calc(100%/3);
+    height: 50px;
+    border-bottom: 5px solid orange;
+    background-color: #d9d9d9;
+    line-height: 50px;
+    font-size: 25px;
+    text-align: center;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+  .tab_item:hover ,.fullscreen:hover{
+    opacity: 0.75;
+}
+  /*ラジオボタンを全て消す*/
+  input[name="tab_item"] {
+    display: none;
+}
+  /*タブ切り替えの中身のスタイル*/
+.tab_content {
+    display: none;
+    padding: 40px 0;
+    clear: both;
+    overflow: hidden;
+}
+  /*選択されているタブのコンテンツのみを表示*/
+  #home:checked ~ #home_content,
+  #timetable:checked ~ #timetable_content,
+  #info:checked ~ #info_content {
+    display: block;
+}
+  /*選択されているタブのスタイルを変える*/
+  .tabs input:checked + .tab_item {
+    background-color: orange;
+    color: #fff;
+}
+/*===============ホーム===============*/
+.itembody{
+    text-align: center;
+    position: relative;
+}
+
+.fullscreen{
+    position:absolute;
+    opacity: 0.5;
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    right:20px;
+}
+
+#now_st{
+    font-size: 50px;
+    color: royalblue;
+    border-bottom: 2px solid #ddd;
+    margin: 0 10%;
+}
+
+#now_st_1{
+    color: royalblue;
+    text-shadow:  0px 2px 0px royalblue;
+}
+#now_st_2{
+    color: royalblue;
+}
+
+h2{
+    margin: 20px 0;
+    font-size: 88px;
+}
+
+#sideitem{
+    display:flex;
+    margin: 50px auto auto auto;
+    justify-content: center;
+}
+.day_table:not(:last-child){
+    border-right:2px solid #ddd;
+}
+.day_table{
+    width: 20%;
+    height: auto;
+}
+
+.day_table_1{
+    font-size: 25px;
+}
+.day_table_2{
+    font-size: 30px;
+}
+#timer{
+    width: 20%;
+    padding: 5px;
+    margin: auto 0;
+    background: whitesmoke;
+    border-bottom: solid 5px #bbb;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+#timer_1{
+    font-size: 30px;
+}
+#timer_2{
+    font-size: 60px;
+    font-weight: 900;
+}
+/* ====================時間割==================== */
+.titlep{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 50px;
+}
+
+#timetable {
+    border-collapse: collapse;
+    margin: 0 auto 13px auto;
+    padding: 0;
+    width: 98%;
+    table-layout: fixed;
+    font-size: 20px;
+}
+#timetable  tr {
+    background-color:whitesmoke;
+    border-bottom: 2px solid #fff;
+}
+#timetable th, #timetable td {
+    padding: 1em 1px 1em 1px;
+    border-right: 2px solid #fff;
+}
+
+#timetable th {
+    font-size: .85em;
+    color: #fff;
+}
+#timetable thead tr{
+    color:#fff;
+}
+#timetable tbody th {
+    color:#fff;
+}
+.txt{
+    font-size: .8em;
+    text-align: center;
+    font-family:"Gungsuh";
+    font-weight: 600;
+}
+
+.tb_sub{
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.non{
+    background:#fff
+}
+
+/*===============フッダー===============*/
+footer{
+    text-align: center;
+    background: #eee;
+}
+small{
+    font-weight: 900;
+    font-size: 12px;
+}
+/* ====================リンク==================== */
+#section_1, #section_2{
+    margin: 10px 25% 0 25%;
+    padding: 0;
+    display: grid;
+    gap: 0px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+#section_1{
+    padding: 0 0 0 0;
+    margin: 25px 25% 0 25%;
+}
+
+#section_2{
+    padding-top: 10px;
+    border-top: solid 1px #bbb;
+}
+
+.section_link {
+    margin: 5px auto 5px;
+    text-align: center;
+    
+}
+.section_link_hit:hover{
+    opacity: 0.75;
+}
+.section_link_image{
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    border-radius: 12px;
+    object-fit: contain;
+    background-color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+#section_link_add{
+    margin: auto;
+}
+#section_link_image_add{
+    width: 50px;
+    height: 50px;
+}
+.section_link_hit{
+    text-decoration:none; 
+    font-size: 15px;
+    color: #0066CC;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+
+
+
+/* ====================テーマカラー==================== */
+.tab_item {
+    border-bottom: 5px solid var(--font-color);
+}
+.tabs input:checked + .tab_item {
+    background-color: var(--font-color);
+}
+#timetable thead tr{
+    background-color: var(--font-color);
+}
+#timetable tbody th {
+    background:var(--font-color);
+}
+
+:root {
+    --font-color: dodgerblue;
+}
+:root[theme="orange"] {
+    --font-color: orange;
+}
+:root[theme="pink"] {
+    --font-color: hotpink;
+}
+:root[theme="green"] {
+    --font-color: teal;
+}
+
+/* ====================電卓==================== */
+#calculator{
+    display: none;
+}
+ /* テーブルの装飾 */
+ #calculatortable {
+    /* インライン要素を中央に配置 */
+    text-align: center;
+  }
+  input {
+    /* ボタンのサイズ */
+    width: 110px;
+    height: 80px;
+    /* ボタンの文字サイズ */
+    font-size: 40px;
+    /* 数字部分の背景色 */
+    background-color: #dcdcdca4;
+    /* ボタンの詳細設定 */
+    border: none;
+    
+    /* クリック時の黒枠を消す */
+    outline: none;
+  }
+  
+  /* ディスプレイの詳細設定 */
+  .display {
+    width: 97%;
+    text-align: right; /* 文字を右詰めに */
+    /* 見た目の詳細設定 */
+    background: #ffffff;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px auto;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+
+  }
+  /* 演算子の背景色を上書きで設定 */
+  .operator {
+    background-color: #87cefa;
+  }
+  /* 記号＝の部分の背景色を上書きで設定 */
+  .equal {
+    background-color: #b6b6b6;
+  }
+
+  /* カーソルを上に乗せた時に色を濃くする */
+  input:hover {
+    background: #747373b9;
+  }
+  .display:hover {
+    background: #ffffff; /* ディスプレイ部分は無効化 */
+  }
+  .operator:hover {
+    background: #339cdd;
+  }
+
+  /* クリック時に色を濃くする */
+  input:active {
+    background:  #5a5a5a;
+  }
+  .operator:active {
+    background: #2c80b4;
+  }
+
+
+  /* ====================モーダル==================== */
+@keyframes popup{
+    from{
+        transform: translateY(150%);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+ }
+ .calculator{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background:rgba(0,0,0,0.7);
+    z-index: 1;
+ }
+
+.notepad{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background:rgba(0,0,0,0.7);
+    z-index: 1;
+}
+.content_notepad{
+    background: whitesmoke;
+    margin: 100px auto;
+    width: 900px;
+    animation-name: popup;
+    animation-duration: 0.7s;
+    box-shadow: 0 2px 7px black;
+    border-radius: 15px;
+}
+
+#memo{
+    resize: none;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px auto;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+}
+
+.content_calculator{
+    background: whitesmoke;
+    margin: 200px auto;
+    width: 500px;
+    animation-name: popup;
+    animation-duration: 0.7s;
+    box-shadow: 0 2px 7px black;
+    border-radius: 15px;
+}
+
+.modal_header{
+    padding: auto ;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+.modal_body{
+    padding: 5%;
+}
+.content_title{
+    margin: 10px 30px;
+    padding: 0;
+    font-size: 30px;
+}
+.close{
+    margin: 0 10px;
+    font-size: 40px;
+    cursor: pointer;
+    color: #222;
+    text-decoration:none; 
+}

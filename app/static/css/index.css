@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+body{
+    background: whitesmoke;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+/*===============メイン===============*/
+main{
+    flex: 1;
+}
+/* ====================モーダル==================== */
+
+@keyframes popup{
+   from{
+       transform: translateY(150%);
+       opacity: 0;
+   }
+   to{
+       opacity: 1;
+   }
+}
+#modal_header{
+   padding: auto ;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 15px;
+}
+#content_title{
+   margin: 10px 30px;
+   padding: 0;
+   font-size: 30px;
+}
+#modal_body{
+   padding: 15px 40px;
+}
+/* ====================モーダル1クラス選択==================== */
+#content{
+    background: whitesmoke;
+    margin: 150px auto;
+    max-width: 900px;
+    box-shadow: 0 2px 7px black;
+    animation-name: popup;
+    animation-duration: 0.7s;
+    border-radius: 15px;
+}
+#section_class{
+    margin: 15px auto auto 0;
+    padding: 0;
+    display: grid;
+    gap: 0px;
+    grid-template-columns: 1fr 1fr 1fr ;
+    background: rgb(248, 248, 248);
+}
+#section_class div {
+    margin: 5px auto 15px;
+}
+#section_class img{
+    width: 40px;
+    height: 40px;
+    margin: 5px 10px 0 0;
+}
+.content_link{
+    display: flex;
+    text-decoration:none; 
+    font-size: 35px;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+.content_link:hover{
+    opacity: 0.75;
+}
+
+/*===============フッダー===============*/
+footer{
+    text-align: center;
+    background: #eee;
+}
+small{
+    font-weight: 900;
+    font-size: 12px;
+}

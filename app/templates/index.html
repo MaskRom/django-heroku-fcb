@@ -1,0 +1,44 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>クラスを選択</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+    </header>
+<!--
+    id : modal
+        id : content
+            id : modal_header
+                id : content_title
+        id : modal_body
+            id : section_class
+                class : content_link
+-->
+    <main>
+        <div id="content">
+            <div id="modal_header">
+                <p id="content_title">クラスを選択</p>
+            </div>
+            <div id="modal_body">
+                <section id="section_class">
+                    {% for c in classlist %}
+                    <div>
+                        <a class="content_link" href="/{{c.slug}}/home" title="{{c.name}}">
+                            <img src="{% static 'img/icon_school.png' %}">
+                            <span>{{c.slug}}</span>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <small>Python3 &times; Django</small>
+    </footer>
+</body>
+</html>

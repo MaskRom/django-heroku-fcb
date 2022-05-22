@@ -1,0 +1,278 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム | {{post.name}}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+        const weeks = new Date().getDay();
+        const timetable = [
+            ["","",""],{% for t in post.timetable.all %}
+            ["{{t.mon_1st}}","{{t.mon_2st}}","{{t.mon_3st}}"],
+            ["{{t.tue_1st}}","{{t.tue_2st}}","{{t.tue_3st}}"],
+            ["{{t.wed_1st}}","{{t.wed_2st}}","{{t.wed_3st}}"],
+            ["{{t.thu_1st}}","{{t.thu_2st}}","{{t.thu_3st}}"],
+            ["{{t.fri_1st}}","{{t.fri_2st}}","{{t.fri_3st}}"],{% endfor %}
+            ["","",""],["","",""],["","",""],["","",""],
+        ];
+        day_timetable = timetable[weeks]
+    </script>
+</head>
+<!--
+    class : header
+        id : header_class
+            id : header_class_name
+            id : header_class_change
+        id : header_time
+        id : header_colour
+        id : login
+-->
+<body>
+    <p id="Clock1" style="display: none">デバッグ用</p>
+    <header>
+        <div class="header">
+            <div id="header_class">
+                <h1 id="header_class_name">{{post.slug}}</h1>
+                <a id="header_class_change" href="../">クラスを変更</a>
+            </div>
+        </div>
+        <div class="header">
+            <p id="header_time">--月--日(-)</p>
+            <div id="header_colour">
+                <a href="javascript:blueMode();" class="box" id="blue"></a>
+                <a href="javascript:orangeMode();" class="box" id="orange"></a>
+                <a href="javascript:pinkMode();" class="box" id="pink"></a>
+                <a href="javascript:greenMode();" class="box" id="green"></a>
+            </div>
+        </div>
+        <div class="header">
+            <a href="login.html" id="login">ログイン</a>
+        </div>
+    </header>
+    <main>
+        <div class="tabs">
+            <input id="home" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="home">ホーム</label>
+            <input id="timetable" type="radio" name="tab_item">
+            <label class="tab_item" for="timetable">時間割</label>
+            <input id="info" type="radio" name="tab_item">
+            <label class="tab_item" for="info">お知らせ</label>
+            <span class="notification-badge">!</span>
+            <div class="tab_content" id="home_content">
+              <div class="tab_content_description">
+<!--
+    class : itembody
+        class : fullscreen
+        id : now_st
+            id : now_st_1
+            id : now_st_2
+
+        id : sideitem
+            id : timer
+                id : timer_1
+                id : timer_2
+            class : day_table
+                class : day_table_1
+                class : day_table_2
+-->
+                <div class="itembody">
+                    <img src="{% static 'img/icon_fullscreen.png' %}" class="fullscreen">
+                    <div id="now_st">
+                        <span id="now_st_1"></span>
+                        <span id="now_st_2">　</span>
+                    </div>
+                    <h2 id="subject">ロード中</h2>
+                </div>
+                
+                <div class="itembody">
+                    <div id="sideitem">
+                        <div id="timer">
+                            <span id="timer_1">残り：</span><span id="timer_2">0分</span>
+                        </div>
+                        <div class="day_table">
+                            <span class="day_table_1">１時間目<br></span>
+                            <span class="day_table_2" id="day_timetable_1st">--</span>
+                        </div>
+                        <div class="day_table">
+                            <span class="day_table_1">2時間目<br></span>
+                            <span class="day_table_2" id="day_timetable_2st">--</span>
+                        </div>
+                        <div class="day_table">
+                            <span class="day_table_1">3時間目<br></span>
+                            <span class="day_table_2" id="day_timetable_3st">--</span>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="tab_content" id="timetable_content">
+              <div class="tab_content_description">
+                <p class="titlep">21CCAの時間割</p>
+                {% for t in post.timetable.all %}
+                    <table id="timetable">
+                        <thead>
+                            <tr>
+                                <td class="non"></td>
+                                <th scope="col">月曜日</th>
+                                <th scope="col">火曜日</th>
+                                <th scope="col">水曜日</th>
+                                <th scope="col">木曜日</th>
+                                <th scope="col">金曜日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="timetable">
+                                <th>1時間目</th>
+                                <td data-label="月曜日" class="txt">{{t.mon_1st}}<p class="tb_sub">{{t.mon_1st_sub}}</p></td>
+                                <td data-label="火曜日" class="txt">{{t.tue_1st}}<p class="tb_sub">{{t.tue_1st_sub}}</p></td>
+                                <td data-label="水曜日" class="txt">{{t.wed_1st}}<p class="tb_sub">{{t.wed_1st_sub}}</p></td>
+                                <td data-label="木曜日" class="txt">{{t.thu_1st}}<p class="tb_sub">{{t.thu_1st_sub}}</p></td>
+                                <td data-label="金曜日" class="txt">{{t.fri_1st}}<p class="tb_sub">{{t.fri_1st_sub}}</p></td>
+                            </tr>
+                            <tr class="timetable">
+                                <th>2時間目</th>
+                                <td data-label="月曜日" class="txt">{{t.mon_2st}}<p class="tb_sub">{{t.mon_2st_sub}}</p></td>
+                                <td data-label="火曜日" class="txt">{{t.tue_2st}}<p class="tb_sub">{{t.tue_2st_sub}}</p></td>
+                                <td data-label="水曜日" class="txt">{{t.wed_2st}}<p class="tb_sub">{{t.wed_2st_sub}}</p></td>
+                                <td data-label="木曜日" class="txt">{{t.thu_2st}}<p class="tb_sub">{{t.thu_2st_sub}}</p></td>
+                                <td data-label="金曜日" class="txt">{{t.fri_2st}}<p class="tb_sub">{{t.fri_2st_sub}}</p></td>
+                            </tr>
+                            <tr class="timetable">
+                                <th>3時間目</th>
+                                <td data-label="月曜日" class="txt">{{t.mon_3st}}<p class="tb_sub">{{t.mon_3st_sub}}</p></td>
+                                <td data-label="火曜日" class="txt">{{t.tue_3st}}<p class="tb_sub">{{t.tue_3st_sub}}</p></td>
+                                <td data-label="水曜日" class="txt">{{t.wed_3st}}<p class="tb_sub">{{t.wed_3st_sub}}</p></td>
+                                <td data-label="木曜日" class="txt">{{t.thu_3st}}<p class="tb_sub">{{t.thu_3st_sub}}</p></td>
+                                <td data-label="金曜日" class="txt">{{t.fri_3st}}<p class="tb_sub">{{t.fri_3st_sub}}</p></td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="tab_content" id="info_content">
+              <div class="tab_content_description">
+                <p class="titlep">お知らせはまだありません</p>
+              </div>
+            </div>
+          </div>
+    </main>
+<!--
+    id : section
+        id : section_1
+        id : section_2
+        class : section_link
+        class : section_link_hit
+        class : section_link_image
+        id : section_link_image_add
+        id : section_link_add
+-->
+    <footer>
+      <section id="section">
+        <div id="section_1">
+
+            <div class="section_link">
+                <a class="section_link_hit" id="open_calculator">
+                    <img src="{% static 'img/icon_calculator.png' %}" class="section_link_image">
+                    <br>電卓
+                </a>
+            </div>
+
+            <div class="section_link">
+                <a class="section_link_hit" id="open_notepad">
+                    <img src="{% static 'img/icon_memo.png' %}" class="section_link_image">
+                    <br>メモ帳
+                </a>
+            </div>
+
+            {% for l in post.shortcutURL.all %}
+            <div class="section_link">
+                <a href="{{l.url}}" class="section_link_hit" target="_blank">
+                    <img src="http://www.google.com/s2/favicons?domain={{l.url}}" class="section_link_image">
+                    <br>{{l.name}}
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div id="section_2">
+
+<!--
+            <div id="section_link_add">
+                <a class="section_link_hit">
+                    <img src="../img/icon_add.png" id="section_link_image_add">
+                    <br>追加
+                </a>
+            </div>
+-->
+        </div>
+      </section>
+      
+      <small>Python3 &times; Django</small>
+    </footer>
+
+    <div class="calculator">
+        <div class="content_calculator">
+            <div class="modal_header">
+                <p class="content_title">電卓</p>
+                <span class="close_calculator close">&times;</span>
+            </div>
+            <div class="modal_body">
+                <form name="dentaku">
+                    <table id="calculatortable">
+                    <tr>
+                        <td colspan="4">
+                        <input type="text" class="display" name="display" value="" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="7" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="8" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="9" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="÷" class="operator" name="div_btn" onclick="get_calc(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="4" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="5" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="6" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="×" class="operator" name="add_btn" onclick="get_calc(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="1" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="2" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="3" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="-" class="operator" onclick="get_calc(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="0" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="C" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="=" class="equal" onclick="get_calc(this)"></td>
+                        <td><input type="button" value="+" class="operator" onclick="get_calc(this)"></td>
+                    </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="notepad">
+        <div class="content_notepad">
+            <div class="modal_header">
+                <p class="content_title">メモ帳</p>
+                <span class="close_notepad close">&times;</span>
+            </div>
+            <div class="modal_body">
+                <textarea id="memo" rows="20" cols="80"></textarea>
+            </div>
+        </div>
+    </div>
+
+  <script src="{% static 'js/time_manager.js' %}"></script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
+  <script src="{% static 'js/calculator.js' %}"></script>
+
+</body>
+</html>
